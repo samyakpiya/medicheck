@@ -11,6 +11,12 @@ Medication Search Interface: Revamps the traditional search process in medicatio
 
 Patient-Specific Drug Recommendation System: Utilizes simulated patient data and machine learning models to provide personalized drug recommendations, improving treatment outcomes and patient safety.
 
+Current Working Drugs:
+ - metformin
+ - sertraline
+ - gabapentin
+ - levetiracetam
+ - atorvastatin
 
 Example URL for backend API requests:
 http://127.0.0.1:5000/check-drug?drug=metformin&age=25&weight=150&height=60&female=1&hos=0
