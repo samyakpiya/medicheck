@@ -18,7 +18,7 @@ type TMedContext = {
   selectedMed: GenericMed | undefined;
   numberOfMeds: number;
   handleDispenseMed: (id: GenericMed["id"]) => Promise<void>;
-  handleChangeSelectedMedId: (id: GenericMed["id"]) => void;
+  handleChangeSelectedMedId: (id: GenericMed["id"] | null) => void;
 };
 
 export const MedContext = createContext<TMedContext | null>(null);
@@ -71,7 +71,7 @@ export default function MedContextProvider({
     setSelectedMedId(null);
   };
 
-  const handleChangeSelectedMedId = (id: GenericMed["id"]) => {
+  const handleChangeSelectedMedId = (id: GenericMed["id"] | null) => {
     setSelectedMedId(id);
   };
 

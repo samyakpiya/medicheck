@@ -2,6 +2,7 @@ import Branding from "@/components/branding";
 import ContentBlock from "@/components/content-block";
 import MedDetails from "@/components/med-details";
 import MedList from "@/components/med-list";
+import PatientSelector from "@/components/patient-selector";
 
 import Search from "@/components/search";
 
@@ -14,6 +15,10 @@ async function Page() {
           subtitle="This system caused the death of a patient"
         />
         {/* <Stats /> */}
+      </div>
+
+      <div className="my-4">
+        <PatientSelector />
       </div>
 
       <div className="grid md:grid-cols-3 md:grid-rows-[45px_1fr] grid-rows-[45px_300px_500px] gap-4 min-h-[600px]">

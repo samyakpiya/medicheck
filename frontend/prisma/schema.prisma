@@ -13,9 +13,9 @@ datasource db {
 model GenericMed {
   id        String   @id @default(cuid())
   name      String
-  count     Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  isGeneric Boolean
 }
 
 model Patient {

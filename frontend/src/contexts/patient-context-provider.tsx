@@ -2,7 +2,7 @@
 
 import { Patient } from "@prisma/client";
 
-import { createContext, useOptimistic, useState } from "react";
+import { createContext, useState } from "react";
 
 type PatientContextProviderProps = {
   data: Patient[];
@@ -14,7 +14,7 @@ type TPatientContext = {
   selectedPatientId: Patient["id"] | null;
   selectedPatient: Patient | undefined;
   numberOfPatients: number;
-  handleChangeSelectedPatientId: (id: Patient["id"]) => void;
+  handleChangeSelectedPatientId: (id: Patient["id"] | null) => void;
 };
 
 export const PatientContext = createContext<TPatientContext | null>(null);
@@ -23,7 +23,7 @@ export default function PatientContextProvider({
   data,
   children,
 }: PatientContextProviderProps) {
-  const [optimisticPatients, setOptimisticPatients] = useOptimistic(data);
+  const [patients, setPatients] = useState(data);
 
   // state
   const [selectedPatientId, setSelectedPatientId] = useState<
@@ -31,20 +31,20 @@ export default function PatientContextProvider({
   >(null);
 
   // derived state
-  const selectedPatient = optimisticPatients.find(
+  const selectedPatient = patients.find(
     (patient) => patient.id === selectedPatientId
   );
   console.log(selectedPatient, "selectedPatient");
-  const numberOfPatients = optimisticPatients.length;
+  const numberOfPatients = patients.length;
 
-  const handleChangeSelectedPatientId = (id: Patient["id"]) => {
+  const handleChangeSelectedPatientId = (id: Patient["id"] | null) => {
     setSelectedPatientId(id);
   };
 
   return (
     <PatientContext.Provider
       value={{
-        patients: optimisticPatients,
+        patients,
         selectedPatientId,
         selectedPatient,
         numberOfPatients,

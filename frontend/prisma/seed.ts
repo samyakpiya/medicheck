@@ -1,319 +1,523 @@
 import { PrismaClient } from "@prisma/client";
 
-const GENERIC_MEDS_LIST = [
+const GENERIC_MEDS_LIST =
+[
   {
-    name: "Acetaminophen",
-    count: 100,
-    brandMeds: ["Tylenol", "Feverall", "Panadol"],
+    name: 'Acetaminophen',
+    brandMeds: [ 'Tylenol', 'Feverall', 'Panadol' ],
+    isGeneric: true
   },
   {
-    name: "Albuterol",
-    count: 150,
-    brandMeds: ["Proventil", "Ventolin", "ProAir"],
+    name: 'Albuterol',
+    brandMeds: [ 'Proventil', 'Ventolin', 'ProAir' ],
+    isGeneric: true
   },
   {
-    name: "Amiodarone",
-    count: 200,
-    brandMeds: ["Cordarone", "Pacerone", "Nexterone"],
+    name: 'Amiodarone',
+    brandMeds: [ 'Cordarone', 'Pacerone', 'Nexterone' ],
+    isGeneric: true
   },
   {
-    name: "Amitriptyline",
-    count: 120,
-    brandMeds: ["Elavil", "Endep", "Vanatrip"],
+    name: 'Amitriptyline',
+    brandMeds: [ 'Elavil', 'Endep', 'Vanatrip' ],
+    isGeneric: true
   },
   {
-    name: "Amlodipine",
-    count: 130,
-    brandMeds: ["Norvasc", "Amvaz", "Katerzia"],
+    name: 'Amlodipine',
+    brandMeds: [ 'Norvasc', 'Amvaz', 'Katerzia' ],
+    isGeneric: true
   },
   {
-    name: "Amoxicillin",
-    count: 140,
-    brandMeds: ["Amoxil", "Trimox", "Moxatag"],
+    name: 'Amoxicillin',
+    brandMeds: [ 'Amoxil', 'Trimox', 'Moxatag' ],
+    isGeneric: true
   },
   {
-    name: "Aripiprazole",
-    count: 160,
-    brandMeds: ["Abilify", "Aristada", "Abilify Maintena"],
+    name: 'Aripiprazole',
+    brandMeds: [ 'Abilify', 'Aristada', 'Abilify Maintena' ],
+    isGeneric: true
   },
   {
-    name: "Atorvastatin",
-    count: 180,
-    brandMeds: ["Lipitor", "Atorva", "Torvast"],
+    name: 'Atorvastatin',
+    brandMeds: [ 'Lipitor', 'Atorva', 'Torvast' ],
+    isGeneric: true
   },
   {
-    name: "Azithromycin",
-    count: 190,
-    brandMeds: ["Zithromax", "Azasite", "Zmax"],
+    name: 'Azithromycin',
+    brandMeds: [ 'Zithromax', 'Azasite', 'Zmax' ],
+    isGeneric: true
   },
   {
-    name: "Baclofen",
-    count: 110,
-    brandMeds: ["Lioresal", "Gablofen", "Ozobax"],
+    name: 'Baclofen',
+    brandMeds: [ 'Lioresal', 'Gablofen', 'Ozobax' ],
+    isGeneric: true
   },
   {
-    name: "Buprenorphine",
-    count: 170,
-    brandMeds: ["Subutex", "Belbuca", "Butrans"],
+    name: 'Buprenorphine',
+    brandMeds: [ 'Subutex', 'Belbuca', 'Butrans' ],
+    isGeneric: true
   },
   {
-    name: "Captopril",
-    count: 165,
-    brandMeds: ["Capoten", "Acepril", "Captoril"],
+    name: 'Captopril',
+    brandMeds: [ 'Capoten', 'Acepril', 'Captoril' ],
+    isGeneric: true
   },
   {
-    name: "Carvedilol",
-    count: 175,
-    brandMeds: ["Coreg", "Carvil", "Carloc"],
+    name: 'Carvedilol',
+    brandMeds: [ 'Coreg', 'Carvil', 'Carloc' ],
+    isGeneric: true
   },
   {
-    name: "Ceftriaxone",
-    count: 185,
-    brandMeds: ["Rocephin", "Cefax", "Ceftril"],
+    name: 'Ceftriaxone',
+    brandMeds: [ 'Rocephin', 'Cefax', 'Ceftril' ],
+    isGeneric: true
   },
   {
-    name: "Ciprofloxacin",
-    count: 195,
-    brandMeds: ["Cipro", "Ciloxan", "Proquin"],
+    name: 'Ciprofloxacin',
+    brandMeds: [ 'Cipro', 'Ciloxan', 'Proquin' ],
+    isGeneric: true
   },
   {
-    name: "Clindamycin",
-    count: 105,
-    brandMeds: ["Cleocin", "Clinda-Derm", "Clindagel"],
+    name: 'Clindamycin',
+    brandMeds: [ 'Cleocin', 'Clinda-Derm', 'Clindagel' ],
+    isGeneric: true
   },
   {
-    name: "Clopidogrel",
-    count: 115,
-    brandMeds: ["Plavix", "Clovix", "Grepid"],
+    name: 'Clopidogrel',
+    brandMeds: [ 'Plavix', 'Clovix', 'Grepid' ],
+    isGeneric: true
   },
   {
-    name: "Codeine",
-    count: 125,
-    brandMeds: ["Codar", "Tylex", "Tylenol with Codeine"],
+    name: 'Codeine',
+    brandMeds: [ 'Codar', 'Tylex', 'Tylenol with Codeine' ],
+    isGeneric: true
   },
   {
-    name: "Cyclobenzaprine",
-    count: 135,
-    brandMeds: ["Flexeril", "Amrix", "Fexmid"],
+    name: 'Cyclobenzaprine',
+    brandMeds: [ 'Flexeril', 'Amrix', 'Fexmid' ],
+    isGeneric: true
   },
   {
-    name: "Dexamethasone",
-    count: 145,
-    brandMeds: ["Decadron", "Hexadrol", "DexPak"],
+    name: 'Dexamethasone',
+    brandMeds: [ 'Decadron', 'Hexadrol', 'DexPak' ],
+    isGeneric: true
   },
   {
-    name: "Diazepam",
-    count: 155,
-    brandMeds: ["Valium", "Diastat", "Diazemuls"],
+    name: 'Diazepam',
+    brandMeds: [ 'Valium', 'Diastat', 'Diazemuls' ],
+    isGeneric: true
   },
   {
-    name: "Diclofenac",
-    count: 165,
-    brandMeds: ["Voltaren", "Cataflam", "Zorvolex"],
+    name: 'Diclofenac',
+    brandMeds: [ 'Voltaren', 'Cataflam', 'Zorvolex' ],
+    isGeneric: true
   },
   {
-    name: "Digoxin",
-    count: 175,
-    brandMeds: ["Lanoxin", "Digitek", "Cardoxin"],
+    name: 'Digoxin',
+    brandMeds: [ 'Lanoxin', 'Digitek', 'Cardoxin' ],
+    isGeneric: true
   },
   {
-    name: "Diltiazem",
-    count: 185,
-    brandMeds: ["Cardizem", "Tiazac", "Dilacor"],
+    name: 'Diltiazem',
+    brandMeds: [ 'Cardizem', 'Tiazac', 'Dilacor' ],
+    isGeneric: true
   },
   {
-    name: "Diphenhydramine",
-    count: 95,
-    brandMeds: ["Benadryl", "Nytol", "Sominex"],
+    name: 'Diphenhydramine',
+    brandMeds: [ 'Benadryl', 'Nytol', 'Sominex' ],
+    isGeneric: true
   },
   {
-    name: "Doxycycline",
-    count: 85,
-    brandMeds: ["Vibramycin", "Oracea", "Doryx"],
+    name: 'Doxycycline',
+    brandMeds: [ 'Vibramycin', 'Oracea', 'Doryx' ],
+    isGeneric: true
   },
   {
-    name: "Duloxetine",
-    count: 75,
-    brandMeds: ["Cymbalta", "Drizalma", "Irenka"],
+    name: 'Duloxetine',
+    brandMeds: [ 'Cymbalta', 'Drizalma', 'Irenka' ],
+    isGeneric: true
   },
   {
-    name: "Enalapril",
-    count: 65,
-    brandMeds: ["Vasotec", "Epaned", "Enalagamma"],
+    name: 'Enalapril',
+    brandMeds: [ 'Vasotec', 'Epaned', 'Enalagamma' ],
+    isGeneric: true
   },
   {
-    name: "Enoxaparin",
-    count: 55,
-    brandMeds: ["Lovenox", "Clexane", "Xaparin"],
+    name: 'Enoxaparin',
+    brandMeds: [ 'Lovenox', 'Clexane', 'Xaparin' ],
+    isGeneric: true
   },
   {
-    name: "Escitalopram",
-    count: 45,
-    brandMeds: ["Lexapro", "Cipralex", "Esipram"],
+    name: 'Escitalopram',
+    brandMeds: [ 'Lexapro', 'Cipralex', 'Esipram' ],
+    isGeneric: true
   },
   {
-    name: "Esomeprazole",
-    count: 35,
-    brandMeds: ["Nexium", "Esotrax", "Esomezol"],
+    name: 'Esomeprazole',
+    brandMeds: [ 'Nexium', 'Esotrax', 'Esomezol' ],
+    isGeneric: true
   },
   {
-    name: "Ethinylestradiol",
-    count: 25,
-    brandMeds: ["Estinyl", "Feminone", "Lynoral"],
+    name: 'Ethinylestradiol',
+    brandMeds: [ 'Estinyl', 'Feminone', 'Lynoral' ],
+    isGeneric: true
   },
   {
-    name: "Famotidine",
-    count: 15,
-    brandMeds: ["Pepcid", "Acid Controller", "Heartburn Relief"],
+    name: 'Famotidine',
+    brandMeds: [ 'Pepcid', 'Acid Controller', 'Heartburn Relief' ],
+    isGeneric: true
   },
   {
-    name: "Fentanyl",
-    count: 5,
-    brandMeds: ["Duragesic", "Actiq", "Fentora"],
+    name: 'Fentanyl',
+    brandMeds: [ 'Duragesic', 'Actiq', 'Fentora' ],
+    isGeneric: true
   },
   {
-    name: "Fluconazole",
-    count: 95,
-    brandMeds: ["Diflucan", "Trican", "Flucoral"],
+    name: 'Fluconazole',
+    brandMeds: [ 'Diflucan', 'Trican', 'Flucoral' ],
+    isGeneric: true
   },
   {
-    name: "Fluoxetine",
-    count: 85,
-    brandMeds: ["Prozac", "Sarafem", "Selfemra"],
+    name: 'Fluoxetine',
+    brandMeds: [ 'Prozac', 'Sarafem', 'Selfemra' ],
+    isGeneric: true
   },
   {
-    name: "Fluticasone",
-    count: 75,
-    brandMeds: ["Flonase", "Flovent", "Cutivate"],
+    name: 'Fluticasone',
+    brandMeds: [ 'Flonase', 'Flovent', 'Cutivate' ],
+    isGeneric: true
   },
   {
-    name: "Furosemide",
-    count: 65,
-    brandMeds: ["Lasix", "Frumex", "Diural"],
+    name: 'Furosemide',
+    brandMeds: [ 'Lasix', 'Frumex', 'Diural' ],
+    isGeneric: true
   },
   {
-    name: "Gabapentin",
-    count: 55,
-    brandMeds: ["Neurontin", "Gralise", "Gabarone"],
+    name: 'Gabapentin',
+    brandMeds: [ 'Neurontin', 'Gralise', 'Gabarone' ],
+    isGeneric: true
   },
   {
-    name: "Hydrochlorothiazide",
-    count: 45,
-    brandMeds: ["HydroDiuril", "Microzide", "Oretic"],
+    name: 'Hydrochlorothiazide',
+    brandMeds: [ 'HydroDiuril', 'Microzide', 'Oretic' ],
+    isGeneric: true
   },
   {
-    name: "Hydrocodone",
-    count: 35,
-    brandMeds: ["Vicodin", "Lortab", "Norco"],
+    name: 'Hydrocodone',
+    brandMeds: [ 'Vicodin', 'Lortab', 'Norco' ],
+    isGeneric: true
   },
   {
-    name: "Ibuprofen",
-    count: 25,
-    brandMeds: ["Advil", "Motrin", "Nurofen"],
+    name: 'Ibuprofen',
+    brandMeds: [ 'Advil', 'Motrin', 'Nurofen' ],
+    isGeneric: true
   },
   {
-    name: "Imipramine",
-    count: 15,
-    brandMeds: ["Tofranil", "Imiprex", "Depsonil"],
+    name: 'Imipramine',
+    brandMeds: [ 'Tofranil', 'Imiprex', 'Depsonil' ],
+    isGeneric: true
   },
   {
-    name: "Insulin Glargine",
-    count: 5,
-    brandMeds: ["Lantus", "Basaglar", "Toujeo"],
+    name: 'Insulin Glargine',
+    brandMeds: [ 'Lantus', 'Basaglar', 'Toujeo' ],
+    isGeneric: true
   },
   {
-    name: "Ipratropium",
-    count: 15,
-    brandMeds: ["Atrovent", "Ipraxa", "Rinatec"],
+    name: 'Ipratropium',
+    brandMeds: [ 'Atrovent', 'Ipraxa', 'Rinatec' ],
+    isGeneric: true
   },
   {
-    name: "Irbesartan",
-    count: 25,
-    brandMeds: ["Avapro", "Irovel", "Aprovel"],
+    name: 'Irbesartan',
+    brandMeds: [ 'Avapro', 'Irovel', 'Aprovel' ],
+    isGeneric: true
   },
   {
-    name: "Isosorbide",
-    count: 35,
-    brandMeds: ["Isordil", "Imdur", "Monoket"],
+    name: 'Isosorbide',
+    brandMeds: [ 'Isordil', 'Imdur', 'Monoket' ],
+    isGeneric: true
   },
   {
-    name: "Ketorolac",
-    count: 45,
-    brandMeds: ["Toradol", "Acular", "Ketofen"],
+    name: 'Ketorolac',
+    brandMeds: [ 'Toradol', 'Acular', 'Ketofen' ],
+    isGeneric: true
   },
   {
-    name: "Lamotrigine",
-    count: 55,
-    brandMeds: ["Lamictal", "Lamogine", "Lamictin"],
+    name: 'Lamotrigine',
+    brandMeds: [ 'Lamictal', 'Lamogine', 'Lamictin' ],
+    isGeneric: true
   },
   {
-    name: "Lansoprazole",
-    count: 65,
-    brandMeds: ["Prevacid", "Zoton", "Inhibitol"],
+    name: 'Lansoprazole',
+    brandMeds: [ 'Prevacid', 'Zoton', 'Inhibitol' ],
+    isGeneric: true
   },
   {
-    name: "Levofloxacin",
-    count: 75,
-    brandMeds: ["Levaquin", "Tavanic", "Elequine"],
+    name: 'Levofloxacin',
+    brandMeds: [ 'Levaquin', 'Tavanic', 'Elequine' ],
+    isGeneric: true
   },
   {
-    name: "Levothyroxine",
-    count: 85,
-    brandMeds: ["Synthroid", "Levoxyl", "Euthyrox"],
+    name: 'Levothyroxine',
+    brandMeds: [ 'Synthroid', 'Levoxyl', 'Euthyrox' ],
+    isGeneric: true
   },
   {
-    name: "Lidocaine",
-    count: 95,
-    brandMeds: ["Xylocaine", "Lignospan", "Versatis"],
+    name: 'Lidocaine',
+    brandMeds: [ 'Xylocaine', 'Lignospan', 'Versatis' ],
+    isGeneric: true
   },
   {
-    name: "Lisinopril",
-    count: 105,
-    brandMeds: ["Prinivil", "Qbrelis", "Zestril​"],
+    name: 'Lisinopril',
+    brandMeds: [ 'Prinivil', 'Qbrelis', 'Zestril​' ],
+    isGeneric: true
   },
   {
-    name: "Loratadine",
-    count: 115,
-    brandMeds: ["Claritin", "Alavert", "Tavist"],
+    name: 'Loratadine',
+    brandMeds: [ 'Claritin', 'Alavert', 'Tavist' ],
+    isGeneric: true
   },
   {
-    name: "Losartan",
-    count: 125,
-    brandMeds: ["Cozaar", "Losacor", "Repace​ "],
+    name: 'Losartan',
+    brandMeds: [ 'Cozaar', 'Losacor', 'Repace​ ' ],
+    isGeneric: true
   },
   {
-    name: "Lovastatin",
-    count: 135,
-    brandMeds: ["Mevacor", "Altoprev", "Lovalip"],
+    name: 'Lovastatin',
+    brandMeds: [ 'Mevacor', 'Altoprev', 'Lovalip' ],
+    isGeneric: true
   },
   {
-    name: "Meloxicam",
-    count: 145,
-    brandMeds: ["Mobic", "Vivlodex", "Qmiiz ODT"],
+    name: 'Meloxicam',
+    brandMeds: [ 'Mobic', 'Vivlodex', 'Qmiiz ODT' ],
+    isGeneric: true
   },
   {
-    name: "Metformin",
-    count: 155,
-    brandMeds: ["Glucophage", "Fortamet", "Glumetza​ "],
+    name: 'Metformin',
+    brandMeds: [ 'Glucophage', 'Fortamet', 'Glumetza​ ' ],
+    isGeneric: true
   },
   {
-    name: "Methotrexate",
-    count: 165,
-    brandMeds: ["Rheumatrex", "Trexall", "Otrexup"],
+    name: 'Methotrexate',
+    brandMeds: [ 'Rheumatrex', 'Trexall', 'Otrexup' ],
+    isGeneric: true
   },
   {
-    name: "Vecuronium",
-    count: 175,
+    name: 'Vecuronium',
     brandMeds: [
-      "Norcuron",
-      "Vecuronio",
-      "Vecuronio",
-      "Bromuro",
-      "Vecuronium",
-      "Bromide",
+      'Norcuron',
+      'Vecuronio',
+      'Vecuronio',
+      'Bromuro',
+      'Vecuronium',
+      'Bromide'
     ],
+    isGeneric: true
   },
+  {
+    name: 'Midazolam',
+    brandMeds: [ 'Versed', 'Dormicum', 'Hypnovel' ],
+    isGeneric: true
+  }
+]
+
+const BRAND_MEDS_LIST = [
+  "Abilify",
+  "Abilify Maintena",
+  "Acepril",
+  "Acid Controller",
+  "Actiq",
+  "Acular",
+  "Advil",
+  "Alavert",
+  "Altoprev",
+  "Amoxil",
+  "Amrix",
+  "Amvaz",
+  "Aprovel",
+  "Aristada",
+  "Atorva",
+  "Atrovent",
+  "Avapro",
+  "Azasite",
+  "Basaglar",
+  "Belbuca",
+  "Benadryl",
+  "Butrans",
+  "Capoten",
+  "Captoril",
+  "Cardizem",
+  "Cardoxin",
+  "Carloc",
+  "Carvil",
+  "Cataflam",
+  "Cefax",
+  "Ceftril",
+  "Ciloxan",
+  "Cipralex",
+  "Cipro",
+  "Claritin",
+  "Cleocin",
+  "Clexane",
+  "Clinda-Derm",
+  "Clindagel",
+  "Clovix",
+  "Codar",
+  "Cordarone",
+  "Coreg",
+  "Cozaar",
+  "Cutivate",
+  "Cymbalta",
+  "Decadron",
+  "Depsonil",
+  "DexPak",
+  "Diastat",
+  "Diazemuls",
+  "Diflucan",
+  "Digitek",
+  "Dilacor",
+  "Diural",
+  "Doryx",
+  "Drizalma",
+  "Duragesic",
+  "Elavil",
+  "Elequine",
+  "Enalagamma",
+  "Endep",
+  "Epaned",
+  "Esipram",
+  "Esomezol",
+  "Esotrax",
+  "Estinyl",
+  "Euthyrox",
+  "Feminone",
+  "Fentora",
+  "Feverall",
+  "Fexmid",
+  "Flexeril",
+  "Flonase",
+  "Flovent",
+  "Flucoral",
+  "Fortamet",
+  "Frumex",
+  "Gabarone",
+  "Gablofen",
+  "Glucophage",
+  "Glumetza\u200b ",
+  "Gralise",
+  "Grepid",
+  "Heartburn Relief",
+  "Hexadrol",
+  "HydroDiuril",
+  "Imdur",
+  "Imiprex",
+  "Inhibitol",
+  "Ipraxa",
+  "Irenka",
+  "Irovel",
+  "Isordil",
+  "Katerzia",
+  "Ketofen",
+  "Lamictal",
+  "Lamictin",
+  "Lamogine",
+  "Lanoxin",
+  "Lantus",
+  "Lasix",
+  "Levaquin",
+  "Levoxyl",
+  "Lexapro",
+  "Lignospan",
+  "Lioresal",
+  "Lipitor",
+  "Lortab",
+  "Losacor",
+  "Lovalip",
+  "Lovenox",
+  "Lynoral",
+  "Mevacor",
+  "Microzide",
+  "Mobic",
+  "Monoket",
+  "Motrin",
+  "Moxatag",
+  "Neurontin",
+  "Nexium",
+  "Nexterone",
+  "Norco",
+  "Norvasc",
+  "Nurofen",
+  "Nytol",
+  "Oracea",
+  "Oretic",
+  "Otrexup",
+  "Ozobax",
+  "Pacerone",
+  "Panadol",
+  "Pepcid",
+  "Plavix",
+  "Prevacid",
+  "Prinivil",
+  "ProAir",
+  "Proquin",
+  "Proventil",
+  "Prozac",
+  "Qbrelis",
+  "Qmiiz ODT",
+  "Repace\u200b ",
+  "Rheumatrex",
+  "Rinatec",
+  "Rocephin",
+  "Sarafem",
+  "Selfemra",
+  "Sominex",
+  "Subutex",
+  "Synthroid",
+  "Tavanic",
+  "Tavist",
+  "Tiazac",
+  "Tofranil",
+  "Toradol",
+  "Torvast",
+  "Toujeo",
+  "Trexall",
+  "Trican",
+  "Trimox",
+  "Tylenol",
+  "Tylenol with Codeine",
+  "Tylex",
+  "Valium",
+  "Vanatrip",
+  "Vasotec",
+  "Ventolin",
+  "Versatis",
+  "Vibramycin",
+  "Vicodin",
+  "Vivlodex",
+  "Voltaren",
+  "Xaparin",
+  "Xylocaine",
+  "Zestril\u200b",
+  "Zithromax",
+  "Zmax",
+  "Zorvolex",
+  "Zoton",
+  "Norcuron",
+  "Vecuronio",
+  "Vecuronio",
+  "Bromuro",
+  "Vecuronium",
+  "Bromide",
+  "Versed",
+  "Dormicum",
+  "Hypnovel",
 ];
+
+const medsObjectList = BRAND_MEDS_LIST.map(medName => ({
+  name: medName,
+  isGeneric: false
+}));
+
 
 const patients = [
   { name: "John Doe", age: 32, height: 175, weight: 70, gender: 0, seizures: false },
@@ -335,11 +539,11 @@ async function main() {
   console.log(`Start seeding ...`);
 
   console.log("Seeding generic meds...")
-  for (const med of GENERIC_MEDS_LIST) {
+  for (const med of [...GENERIC_MEDS_LIST, ...medsObjectList]) {
     const result = await prisma.genericMed.create({
       data: {
         name: med.name,
-        count: med.count,
+        isGeneric: med.isGeneric,
       },
     });
     console.log(`Created med with id: ${result.id}`);
