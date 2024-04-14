@@ -1,7 +1,5 @@
 # MediCheck
-
 ![ScreenShot Tool -20240414002349](https://github.com/samyakpiya/medicheck/assets/76403666/0ba6e7ee-efc7-4d11-886d-94014f28d734)
-
 
 ## Project Inspiration
 The tragic medication error at Vanderbilt University Medical Center underscores the need for technology that reduces such risks. Nurse RaDonda Vaught's confusion between generic and brand drug names—leading her to dispense and administer the paralytic vecuronium instead of the intended Versed—has critical implications for healthcare safety.
@@ -10,10 +8,12 @@ The tragic medication error at Vanderbilt University Medical Center underscores 
 
 ## Problem Statement
 ![problem drawio](https://github.com/samyakpiya/medicheck/assets/76403666/65a3cc11-ada0-4535-af50-20a962f1d68d)
+
 In fast-paced healthcare settings, medication cabinets like Pyxis can increase the potential for errors by displaying only generic drug names. Nurses must rapidly translate between generic and brand names, a task prone to mistakes under pressure and distraction.
 
 ## Our Solution
 ![Blank diagram (2)](https://github.com/samyakpiya/medicheck/assets/76403666/4ffbccb9-b564-46d8-9aff-2ab59d16e7c7)
+
 We propose a system that augments the Pyxis UI to enhance drug selection safety. Our solution uses neural networks to analyze the chosen medication against patient data, providing a confidence rating to the nurse. A low confidence rating would trigger additional verification steps, potentially preventing catastrophic errors.
 
 ## Proof-of-Concept
