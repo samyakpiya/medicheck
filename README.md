@@ -1,5 +1,6 @@
 # MediCheck
-![ScreenShot Tool -20240414002349](https://github.com/samyakpiya/medicheck/assets/76403666/0ba6e7ee-efc7-4d11-886d-94014f28d734)
+![ScreenShot Tool -20240425160928](https://github.com/samyakpiya/medicheck/assets/76403666/e7aab428-be69-4fe8-a1e3-b69e5765b330)
+
 
 ## Project Inspiration
 The tragic medication error at Vanderbilt University Medical Center underscores the need for technology that reduces such risks. Nurse RaDonda Vaught's confusion between generic and brand drug names—leading her to dispense and administer the paralytic vecuronium instead of the intended Versed—has critical implications for healthcare safety.
