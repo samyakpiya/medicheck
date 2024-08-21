@@ -1,7 +1,7 @@
 # MediCheck
 ![ScreenShot Tool -20240425160928](https://github.com/samyakpiya/medicheck/assets/76403666/e7aab428-be69-4fe8-a1e3-b69e5765b330)
 
-Read the hackathon dev post [here](https://devpost.com/software/medicheck-ez0d9i).
+MediCheck is a project developed during the UKY CatHacks X Hackathon, where it won 1st place. Read the hackathon dev post for more information by clicking [here](https://devpost.com/software/medicheck-ez0d9i).
 
 ## Project Inspiration
 The tragic medication error at Vanderbilt University Medical Center underscores the need for technology that reduces such risks. Nurse RaDonda Vaught's confusion between generic and brand drug names—leading her to dispense and administer the paralytic vecuronium instead of the intended Versed—has critical implications for healthcare safety.
